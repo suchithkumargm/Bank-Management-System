@@ -1,11 +1,12 @@
-package bank.management.system;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener{
 
+        JButton login,signUp,clear;
+        JTextField cardTextField;
+        JPasswordField pinTextField;
     Login(){
         setTitle("AUTOMATED TELLER MACHINE");
 
@@ -28,8 +29,9 @@ public class Login extends JFrame implements ActionListener{
         cardno.setBounds(120,150,150,30);
         add(cardno);
 
-        JTextField cardTextField = new JTextField();
+        cardTextField = new JTextField();
         cardTextField.setBounds(300,150,230,30);
+        cardTextField.setFont(new Font("Arial",Font.BOLD,14));
         add(cardTextField);
         
         JLabel pin=new JLabel("PIN : ");
@@ -37,25 +39,26 @@ public class Login extends JFrame implements ActionListener{
         pin.setBounds(120,220,230,30);
         add(pin);
 
-        JTextField pinTextField = new JTextField();
+        pinTextField = new JPasswordField();
         pinTextField.setBounds(300,220,230,30);
+        pinTextField.setFont(new Font("Arial",Font.BOLD,14));
         add(pinTextField);
 
-        JButton login = new JButton("SIGN IN");
+        login = new JButton("SIGN IN");
         login.setBounds(300,300,100,30);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.white);
         login.addActionListener(this);
         add(login);
         
-        JButton clear = new JButton("CLEAR");
+        clear = new JButton("CLEAR");
         clear.setBounds(430,300,100,30);
         clear.setBackground(Color.BLACK);
         clear.setForeground(Color.white);
         clear.addActionListener(this);
         add(clear);
         
-        JButton signUp = new JButton("SIGN UP");
+        signUp = new JButton("SIGN UP");
         signUp.setBounds(300,350,230,30);
         signUp.setBackground(Color.BLACK);
         signUp.setForeground(Color.white);
@@ -68,10 +71,21 @@ public class Login extends JFrame implements ActionListener{
         setVisible(true);
         setLocation(300,150);
     }
-    
-    public void actionPerformed(){
 
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==clear){
+            cardTextField.setText("");
+            pinTextField.setText("");
+        }
+        else if(e.getSource()==login){
+            
+        }
+        else if(e.getSource()==signUp){
+            setVisible(false);
+            new SignUpOne().setVisible(true);
+        }
     }
+
     public static void main(String[] args){
         new Login();
     }
