@@ -8,7 +8,7 @@ public class SignUp3 extends JFrame implements ActionListener{
     JRadioButton r1,r2,r3,r4;
     JCheckBox c1,c2,c3,c4,c5,c6,c7;
     JButton submit,cancel;
-    String formno;
+    String formno,cardNumber,pinNumber;
 
     SignUp3(String formno){
         this.formno=formno;
@@ -165,8 +165,8 @@ public class SignUp3 extends JFrame implements ActionListener{
             }
             
             Random rd= new Random();
-            String cardNumber=""+Math.abs(rd.nextLong()%9000000L + 5040936000000000L);
-            String pinNumber=""+Math.abs(rd.nextLong()%9000L + 1000L);
+            cardNumber=""+Math.abs(rd.nextLong()%9000000L + 5040936000000000L);
+            pinNumber=""+Math.abs(rd.nextLong()%9000L + 1000L);
             String facility="";
             if(c1.isSelected()){
                 facility+="ATM card  ";
@@ -197,12 +197,15 @@ public class SignUp3 extends JFrame implements ActionListener{
                     c.s.executeUpdate(query2);
 
                     JOptionPane.showMessageDialog(null,"Card number "+cardNumber+"\npin : "+pinNumber);
+                    setVisible(false);
+                    new Deposit(pinNumber).setVisible(true);
                 }
             }catch(Exception ex){
                 System.out.println(ex);
             }
         }else if(e.getSource() == cancel){
-
+            setVisible(false);
+            new Login().setVisible(true);
         }
     }
     public static void main(String args[])

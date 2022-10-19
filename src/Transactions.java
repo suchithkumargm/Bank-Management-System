@@ -30,7 +30,7 @@ public class Transactions extends JFrame implements ActionListener{
         deposit.addActionListener(this);
         image.add(deposit);
 
-        withdrawal=new JButton("Cash withdrawal");
+        withdrawal=new JButton("Withdrawal");
         withdrawal.setBounds(380,342,120,25);
         withdrawal.addActionListener(this);
         image.add(withdrawal);
@@ -70,6 +70,12 @@ public class Transactions extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == exit){
             System.exit(0);
+        }else if(e.getSource()==deposit){
+            setVisible(false);
+            new Deposit(pinNumber).setVisible(true);
+        }else if(e.getSource()==withdrawal){
+            setVisible(false);
+            new Withdrawal(pinNumber).setVisible(true);
         }
         
     }
